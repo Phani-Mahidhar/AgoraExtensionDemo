@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5px"
+        android:paddingBottom="0px">
+
+        <FrameLayout
+            android:id="@+id/view_container"
+            android:layout_above="@id/rtc_on_off"
+
+            android:layout_width="180dp"
+            android:layout_height="fill_parent"
+            android:layout_alignParentLeft="true"
+            android:layout_marginEnd="24dp">
+        </FrameLayout>
+        <Button
+            android:id="@+id/rtc_on_off"
+            android:layout_width="180dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10px"
+            android:layout_alignParentBottom="true"
+            android:text="Disable Extension" />
+
+        <FrameLayout
+            android:id="@+id/remote_video_view_container"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+        </FrameLayout>
+        <TextView
+            android:id="@+id/transcript_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TRANSCRIPTION DETAILS: "
+            android:layout_toRightOf="@id/view_container"
+            android:textSize="20sp">
+
+        </TextView>
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/view_container"
+            android:layout_below="@id/transcript_title">
+            <TextView
+                android:id="@+id/transcript_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textSize="18sp" >
+
+            </TextView>
+            <ProgressBar
+                android:id="@+id/pBar"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="invisible"></ProgressBar>
+        </FrameLayout>
+
+
+
+
+    </RelativeLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
