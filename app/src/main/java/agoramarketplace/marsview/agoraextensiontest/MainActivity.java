@@ -57,12 +57,12 @@ public class MainActivity extends AppCompatActivity implements io.agora.rtc2.IMe
     private ProgressBar pgsBar;
     private RtcEngine mRtcEngine;
     private SurfaceView mRemoteView;
-    private String temporaryToken = "006bcc18c336ece4d46a679ec11f1612071IAB5+O8K7WEhqOaLqSlfr6GjlvT1u7oqJ3UoAKqNHClGbeEVD4QAAAAAEAA8nW45DDcqYQEAAQAMNyph";
-
+//    private String temporaryToken = "006bcc18c336ece4d46a679ec11f1612071IAB5+O8K7WEhqOaLqSlfr6GjlvT1u7oqJ3UoAKqNHClGbeEVD4QAAAAAEAA8nW45DDcqYQEAAQAMNyph";
+    private String temporaryToken;
     private String audioId;
 
-    private final String API_KEY = "1cbb6faa-e87c-4fc7-8720-b1dfe2bcb9e2";
-    private final String SECRET_KEY = "3JXPZAJ-X1Y4ZHS-GWGB3QX-WAYBKRG";
+    private String API_KEY ;
+    private String API_SECRET ;
 
     private boolean extensionEnabled = true;
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -70,12 +70,16 @@ public class MainActivity extends AppCompatActivity implements io.agora.rtc2.IMe
     protected void onCreate(Bundle savedInstanceState) {
         Log.d(TAG, "onCreate");
         super.onCreate(savedInstanceState);
-        appId = "785bc12c0f414be191dfbed3d63b9f80";
-        channelName = "agora_extension";
+
+        appId = getString(R.string.agora_app_id);
+        channelName = getString(R.string.agora_channel);
+        temporaryToken = getString(R.string.agora_access_token);
+        API_KEY = getString(R.string.marsview_apiKey);
+        API_SECRET = getString(R.string.marsview_apiSecret);
+
         setContentView(R.layout.activity_main);
         mTextView = (TextView) findViewById(R.id.transcript_view);
         pgsBar = (ProgressBar)findViewById(R.id.pBar);
-//        pgsBar.setVisibility(View.VISIBLE);
         initUI();
         rtcOnOffButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -204,7 +208,7 @@ public class MainActivity extends AppCompatActivity implements io.agora.rtc2.IMe
             Log.d(TAG, "api call join channel");
 
             mRtcEngine.setExtensionProperty(ExtensionManager.EXTENSION_VENDOR_NAME, ExtensionManager.EXTENSION_AUDIO_FILTER_NAME, "API_KEY", API_KEY); // login to app.marsivew.ai
-            mRtcEngine.setExtensionProperty(ExtensionManager.EXTENSION_VENDOR_NAME, ExtensionManager.EXTENSION_AUDIO_FILTER_NAME, "API_SECRET", SECRET_KEY); // login to app.marsview.ai
+            mRtcEngine.setExtensionProperty(ExtensionManager.EXTENSION_VENDOR_NAME, ExtensionManager.EXTENSION_AUDIO_FILTER_NAME, "API_SECRET", API_SECRET); // login to app.marsview.ai
 
             mRtcEngine.joinChannel(temporaryToken, channelName, "", 0);
             mRtcEngine.startPreview();
@@ -283,7 +287,7 @@ public class MainActivity extends AppCompatActivity implements io.agora.rtc2.IMe
             if(key.equalsIgnoreCase("transactionId")){
                 // Marsview provides a helper class to facilitate the developer in posting compute models
                 // and get processing state of each model and metadata afterwards.
-                final MarsviewRequestHelper requestHelper = new MarsviewRequestHelper(API_KEY, SECRET_KEY); //project api key, project api secret
+                final MarsviewRequestHelper requestHelper = new MarsviewRequestHelper(API_KEY, API_SECRET); //project api key, project api secret
                 try {
                     JSONObject data = new JSONObject(value);
                     final String txnId = data.getString("txnId");

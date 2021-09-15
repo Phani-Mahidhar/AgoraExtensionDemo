@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">AgoraExtensionTest</string>
-    <string name="agora_app_id"></string>
+
+
+    <string name="agora_app_id">Agora APP ID</string>
+    <string name="agora_channel">Agora CHANNEL NAME</string>
+    <string name="agora_access_token">Agora ACCESS TOKEN</string>
+
+    <string name="marsview_apiKey">PROJECT API KEY</string>
+    <string name="marsview_apiSecret">PROJECT API SECRET</string>
+
+
     <string name="disable_button_text">DISABLE EXTENSION</string>
     <string name="enable_button_text">ENABLE EXTENSION</string>
 </resources>
