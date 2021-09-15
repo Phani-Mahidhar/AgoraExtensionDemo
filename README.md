@@ -50,7 +50,7 @@ place your App Id, Agora Channel Name, Agora Temp Access Token in their respecti
 ```
 
 ### Obtain Project API Key and API Secret
-When you add the Marsview extension to your agora project, you will receive an API KEY and API SECRET from Marsview for that particular project.  
+When you add the Marsview extension to your agora project, you will receive an API KEY and API SECRET along with .aar extension file from agora, add this .aar file in your Android Project as a module dependancy to the app. 
 
 Paste these in AgoraExtensionDemo/app/src/main/res/values/strings.xml file
 in the respective variables.
