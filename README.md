@@ -60,6 +60,45 @@ in the respective variables.
 <string name="marsview_apiSecret">PROJECT API SECRET</string>
 ```
 
+store the API_KEY and API_SECRET in a variable in the MainActivity.java file.
+
+```
+public String API_KEY = getString(R.string.marsview_apiKey);
+public String API_SECRET = getString(R.string.marsview_apiSecret);
+```
+
+## Usage
+
+Once you disable the extension in the UI, you will receive a transactionId corresponding to the audio file uploaded.  
+This transactionId is used to POST compute data to the Marsview Servers to enable processing of the audio data.  
+
+The compute Model can be found in the onEvent Method of MainActivity.java file
+
+By default this is the model posted in for compute data.
+```
+
+    final JSONArray enableModels = new JSONArray("[{
+        'modelType':'speech_to_text', 
+        'modelConfig': {
+            'automatic_punctuation': true,      
+            'custom_vocabulary': ['Marsview', 'Communications'], 
+            'enableKeywords': true, 
+            'enableSuggestedIntents': true, 
+            'topics': {'threshold': 0.5}
+            }
+        }]");
+
+
+```
+
+Other Compute Models can be posted and can be referenced from [the marsview docs page](https://docs.marsview.ai/).  
+
+
+## Run the Application
+
+Open the project with Android Studio, Connect your Androd device, build and run the sample application.  
+
+
 
 
 
